@@ -17,7 +17,7 @@ svg {
   Keyframes
 --------------------------- */
 
-@keyframes slide {
+@keyframes slidein {
   50% {
     transform: translate3d(0,-10px,0);
   }
@@ -26,6 +26,18 @@ svg {
   }
   100% {
     transform: translate3d(0,0,0);
+  }
+}
+
+@keyframes slideout {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  80% {
+    transform: translate3d(0,-10px,0);
+  }
+  100% {
+    transform: translate3d(0,180px,0);
   }
 }
 
@@ -43,8 +55,25 @@ svg {
   }
 }
 
-@keyframes offset {
+@keyframes offsetin {
+  0% {
+    stroke-width: 5;
+    stroke: orange;
+  }
   55% {
+    stroke-opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes offsetout {
+  0% {
+    stroke-width: 5;
+    stroke: white;
+  }
+  75% {
     stroke-opacity: 1;
   }
   100% {
@@ -57,31 +86,36 @@ svg {
 --------------------------- */
 
 .stars-bg {
-  stroke: orange;
-  stroke-width: 5;
   stroke-opacity: 0;
   stroke-dasharray: 815;
   stroke-dashoffset: 815;
-  animation: offset 1.4s 3.1s linear forwards;
+  animation: offsetin 1.4s 3s linear forwards,
+             offsetout 1.2s 6s linear forwards;
+}
+
+.stars-bg:hover {
+  opacity: 0.85;
 }
 
 .star {
   transform: translate3d(0, 180px, 0);
-  animation: slide .4s forwards,
-             grow .7s ease-out forwards;
+  animation: slidein .4s forwards,
+             grow .7s ease-out forwards,
+             grow .7s ease-out forwards,
+             slideout .4s forwards;
 }
 
 .star:nth-of-type(1) {
-  animation-delay: .3s, 1.9s;
+  animation-delay: .3s, 1.9s, 4.4s, 5.1s;
   transform-origin: 375px 365px;
 }
 
 .star:nth-of-type(2) {
-  animation-delay: 0s, 1.3s;
+  animation-delay: 0s, 1.3s, 3.9s, 4.5s;
   transform-origin: 275px 345px;
 }
 
 .star:nth-of-type(3) {
-  animation-delay: .6s, 2.5s;
+  animation-delay: .6s, 2.5s, 5.1s, 5.7s;
   transform-origin: 430px 370px;
 }
