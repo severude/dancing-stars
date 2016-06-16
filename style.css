@@ -91,10 +91,11 @@ svg {
   stroke-dashoffset: 815;
   animation: offsetin 1.4s 3s linear forwards,
              offsetout 1.2s 6s linear forwards;
+  transition: opacity .6s;
 }
 
 .stars-bg:hover {
-  opacity: 0.85;
+  opacity: 0.5;
 }
 
 .star {
